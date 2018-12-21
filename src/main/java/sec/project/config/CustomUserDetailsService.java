@@ -25,6 +25,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.accountDetails = new TreeMap<>();
         this.accountDetails.put("ted", password);
         this.accountDetails.put("matt", password);
+        this.accountDetails.put("seppo", password);
+        this.accountDetails.put("ismo", password);
+        this.accountDetails.put("ulla", password);
     }
 
     @Override
@@ -34,7 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         
         String role = "USER";
-        if (username.equals("ted")) {
+        if (username.equals("ted") || username.equals("seppo")) {
             role = "ADMIN";
         }
 
