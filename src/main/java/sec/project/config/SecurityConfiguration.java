@@ -21,13 +21,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // no real security at the moment
-        //http.authorizeRequests()
-               // .anyRequest().permitAll();
+        
         http.authorizeRequests()
-                .antMatchers("/admin", "/admin/").hasAuthority("ADMIN")//.authenticated() //FIXME
-                //.antMatchers("/admin/**").authenticated()
-                .anyRequest().authenticated()//permitAll()
+                .antMatchers("/admin", "/admin/").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
         ;
